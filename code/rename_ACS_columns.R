@@ -23,10 +23,11 @@ rename_col_df <- function(df, year) {
     str_replace_all("!!SELECTED MONTHLY OWNER COSTS (SMOC)!!", "SMOC_") %>%
     str_replace_all("!!SELECTED MONTHLY OWNER COSTS AS A PERCENT OF INCOME (SMOCAPI)!!", "SMOCAPI_") %>%
     str_replace_all("!!GROSS RENT!!", "gross rent_") %>%
-    str_replace_all("!!GROSS RENT AS A PERCENT OF INCOME!!", "GARPI_")
-
+    str_replace_all("!!GROSS RENT AS A PERCENT OF INCOME!!", "GARPI_") %>%
+    str_replace_all("Occupied units paying rent!!", " ")
+  
   colnames(df) <- cnames
-  write_csv(df, paste0("R_exp/merge_", year, ".csv"))
+  write_csv(df, paste0("R_exp/merge_", year, ".csv"), append = FALSE)
 }
 rename_col_df(merge_2010, "2010")
 
